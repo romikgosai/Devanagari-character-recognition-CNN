@@ -46,6 +46,6 @@ def recognize():
 def prediction():
     image_file = url_for(
         'static', filename='pictures/' + current_user.picture_name)
-    classes = ["क","ख","ग","घ","ङ","च","छ","ज","झ","ञ","ट","ठ","ड","ढ","ण","त","थ","द","ध","न","प","फ","ब","भ","म","य","र","ल","व","श","ष","स","ह","क्ष","त्र","ज्ञ","०","१","२","३","४","५","६","७","८","९"]
+    classes = ["क-ka","ख-kha","ग-ga","घ-gha","ङ-nga","च-cha","छ-chha","ज-ja","झ-jha","ञ-yna","ट-ta","ठ-tha","ड-da","ढ-dha","ण-ana","त-ta","थ-tha","द-da","ध-dha","न-na","प-pa","फ-pha","ब-ba","भ-bha","म-ma","य-ya","र-ra","ल-la","व-wa","श-sha","ष-shha","स-sa","ह-ha","क्ष-ksha","त्र-tra","ज्ञ-gya","०-0","१-1","२-2","३-3","४-4","५-5","६-6","७-7","८-8","९-9"]
     prediction = classes[current_user.picture_prediction]
     return render_template('prediction.html', image_file = image_file, prediction=prediction)
