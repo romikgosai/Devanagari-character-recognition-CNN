@@ -1,11 +1,10 @@
-from recognition import app
+from recognition import app, db
 import os
 from flask import render_template, redirect, url_for
 from flask_login import current_user, login_user, login_required
 from recognition.models import Recognition
 from recognition.forms import RecognitionForm
 from recognition.recognizer import recognizer
-from recognition import db
 from PIL import Image
 import secrets
 import numpy as np
@@ -37,7 +36,7 @@ def recognize():
             login_user(recognition)
             return redirect(url_for('prediction')) 
         else:
-            return redirect(url_for('prediction'))
+            return redirect(url_for('recognize'))
     return render_template('recognize.html', form=form)
 
 
@@ -46,6 +45,6 @@ def recognize():
 def prediction():
     image_file = url_for(
         'static', filename='pictures/' + current_user.picture_name)
-    classes = ["क-ka","ख-kha","ग-ga","घ-gha","ङ-nga","च-cha","छ-chha","ज-ja","झ-jha","ञ-yna","ट-ta","ठ-tha","ड-da","ढ-dha","ण-ana","त-ta","थ-tha","द-da","ध-dha","न-na","प-pa","फ-pha","ब-ba","भ-bha","म-ma","य-ya","र-ra","ल-la","व-wa","श-sha","ष-shha","स-sa","ह-ha","क्ष-ksha","त्र-tra","ज्ञ-gya","०-0","१-1","२-2","३-3","४-4","५-5","६-6","७-7","८-8","९-9"]
+    classes = ["क-ka","ख-kha","ग-ga","घ-gha","ङ-Ṅa","च-cha","छ-chha","ज-ja","झ-jha","ञ-yna","ट-ta","ठ-tha","ड-da","ढ-dha","ण-ana","त-ta","थ-tha","द-da","ध-dha","न-na","प-pa","फ-pha","ब-ba","भ-bha","म-ma","य-ya","र-ra","ल-la","व-wa","श-sha","ष-shha","स-sa","ह-ha","क्ष-ksha","त्र-tra","ज्ञ-gya","०-0","१-1","२-2","३-3","४-4","५-5","६-6","७-7","८-8","९-9"]
     prediction = classes[current_user.picture_prediction]
     return render_template('prediction.html', image_file = image_file, prediction=prediction)
