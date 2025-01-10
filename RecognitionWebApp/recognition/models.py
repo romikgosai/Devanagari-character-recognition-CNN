@@ -7,6 +7,7 @@ def load_user(user):
     return Recognition.query.get(int(user))
 
 class Recognition(db.Model, UserMixin):
+    __tablename__ = 'recognition'
     picture_id = db.Column(db.Integer, primary_key=True)
     picture_name = db.Column(db.String(20), nullable=False)
     picture_prediction = db.Column(db.Integer)
