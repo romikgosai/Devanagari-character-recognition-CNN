@@ -7,7 +7,7 @@ import os
 
 
 def recognizer(image_data):
-  file_name = os.path.dirname(__file__) +'\\model.h5'
+  file_name = os.path.join(os.path.dirname(__file__),'model.h5')
   print(file_name)
   model = tf.keras.models.load_model(file_name)
   image  = Image.open(image_data)
