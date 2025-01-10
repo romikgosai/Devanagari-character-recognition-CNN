@@ -1,5 +1,11 @@
-*__pycache*
-*/pictures/*.jpg
-*.db
-*/static/pictures/*
+# Ignore all files in the pictures directory
+RecognitionWebApp/recognition/static/pictures/*
 
+# Ignore __pycache__ directories
+__pycache__/
+**/__pycache__/
+
+# Ignore database files
+*.db
+*.sqlite
+*.sqlite3
