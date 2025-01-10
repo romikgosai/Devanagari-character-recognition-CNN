@@ -16,7 +16,7 @@ def save_recognition_picture(form_picture):
     _, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex+f_ext
     picture_path = os.path.join(
-        app.root_path, 'static\\pictures\\', picture_fn)
+        app.root_path, 'static/pictures', picture_fn)
     output_size = (500, 500)
     i = Image.open(form_picture)
     i.thumbnail(output_size)
@@ -30,7 +30,7 @@ def recognize():
     if form.validate_on_submit():
         if form.picture.data:
             picture_file = save_recognition_picture(form.picture.data)
-            recognition = Recognition(picture_name=picture_file,picture_prediction=recognizer(os.path.dirname(__file__)+'\\static\\pictures\\'+picture_file))
+            recognition = Recognition(picture_name=picture_file,picture_prediction=recognizer(os.path.join(os.path.dirname(__file__),'static/pictures',picture_file)))
             db.session.add(recognition)
             db.session.commit()
             login_user(recognition)
