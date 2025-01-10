@@ -1,0 +1,13 @@
+requests
+jinja2
+six
+setuptools
+packaging
+flask
+tensorflow
+flask_sqlalchemy
+flask_login
+flask_wtf
+opencv-python
+pillow
+scipy
